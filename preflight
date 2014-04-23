@@ -1,0 +1,131 @@
+#!/bin/bash
+
+
+echo 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+------------------------------------------------------------
+
+# Post installation script
+# ------------------------
+# First run
+if [ "$1" = "--firstrun" ]; then
+    if [ -d /live/overlay ]; then
+        exit 0    
+    fi
+    if [ -e "/home/$USER/.config/aerofoil/preflight" ]; then
+        exit 0
+    else
+        if ! echo `groups` | grep "sudo" >/dev/null; then
+            # Create flag
+            if [ ! -d "/home/$USER/.config/aerofoil" ]; then
+                mkdir /home/$USER/.config/aerofoil
+            fi
+            if [ ! -f "/home/$USER/.config/aerofoil/preflight" ]; then
+                 touch /home/$USER/.config/aerofoil/preflight
+            fi
+            exit 0
+        fi
+	if [ -x "/usr/bin/terminator" ];then
+            terminator --title="preflight" --command="preflight"
+            exit 0
+        fi
+    fi
+fi
+# Open in terminator
+if [ "$1" = "--open" ]; then
+    if [ -x "/usr/bin/terminator" ];then
+        terminator --title="preflight" --command="preflight"
+        exit 0
+    fi
+fi
+# Create flag
+if [ ! -d "/home/$USER/.config/aerofoil" ]; then
+    mkdir /home/$USER/.config/aerofoil
+fi
+if [ ! -f "/home/$USER/.config/aerofoil/preflight" ]; then
+    touch /home/$USER/.config/aerofoil/preflight
+fi
+
+if ! echo `groups` | grep "sudo" >/dev/null; then
+  echo "error: not a member of sudo group"
+  exit 0
+fi
+
+# Vars
+LIBDIR="/usr/lib/lib-preflight"
+STEP="0"
+STEPS=`ls -1 $LIBDIR | wc -l`
+# Importing variables and functions from cb-include.cfg
+if [[ -f /usr/bin/cb-include.cfg ]]
+then
+    source "/usr/bin/cb-include.cfg"
+else
+    echo "error: failed to locate cb-include.cfg"
+    exit 1
+fi
+
+# Import prompt
+if [[ -f "${LIBDIR}/prompt" ]]; then
+	source "${LIBDIR}/prompt"
+else
+	echo "error: failed to locate prompt"
+	exit 1
+fi
+
+# Run through steps
+STEP=$((STEP+1))
+
+
+STEP=$((STEP+1))
+
+
+STEP=$((STEP+1))
+
+
+STEP=$((STEP+1))
+
+
+STEP=$((STEP+1))
+
+
+STEP=$((STEP+1))
+
+
+STEP=$((STEP+1))
+
+
+if [ "$DEVEL" != true ]; then
+    exit 0
+fi
+
+STEP=$((STEP+1))
+
+
+STEP=$((STEP+1))
+
+
+STEP=$((STEP+1))
+
+
+STEP=$((STEP+1))
+
+exit 0
