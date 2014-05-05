@@ -1,0 +1,9 @@
+[submodule "packages"]
+	path = packages
+	url = https://github.com/aerofoil/packages.git
+[submodule "preflight"]
+	path = preflight
+	url = https://github.com/aerofoil/preflight.git
+[submodule "graphics"]
+	path = graphics
+	url = https://github.com/aerofoil/graphics.git
