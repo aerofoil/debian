@@ -1,0 +1,11 @@
+lb config \
+-a amd64 \
+--apt aptitude \
+-d jessie \
+--binary-filesystem ext4 \
+--bootloader grub \
+--debian-installer netinst \
+--debian-installer-gui true \
+--backports true \
+--archive-areas "main contrib non-free" \
+--grub-splash splash.png
